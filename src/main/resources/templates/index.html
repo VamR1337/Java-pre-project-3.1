@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <ul>
+        <th:block th:each="user : ${user}">
+            <li th:text="${user}"></li>
+            <form method="post" action="/delete" th:object="${user}">
+                <input type="hidden" name="id" th:value="${user.id}" />
+                <button type="submit">Delete</button>
+            </form>
+            <form method="get" action="/update" th:object="${user}">
+                <input type="hidden" name="id" th:value="${user.id}" />
+                <button type="submit">Update</button>
+            </form>
+        </th:block>
+    </ul>
+    <input type = "button" value="add"
+        onclick="window.location.href = 'addNew'"/>
+</div>
+</body>
+</html>
